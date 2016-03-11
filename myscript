@@ -1,0 +1,27 @@
+#!/bin/bash -x
+
+#SBATCH -J myrun
+
+#SBATCH --export=ALL
+
+#SBATCH -p QACP
+
+#SBATCH --nodes=1
+
+#SBATCH --ntasks-per-node=8
+
+#SBATCH -t 1:00:00
+
+#SBATCH -o stdout.txt
+
+#SBATCH -e stderr.txt
+
+#SBATCH --mail-type=ALL
+
+#SBATCH --mail-user=xyz@rpi.edu
+
+EXE_FILE=./a.out
+
+srun hostname -s | sort -n > hosts.$SLURM_JOB_ID
+
+NPROCS = 2
